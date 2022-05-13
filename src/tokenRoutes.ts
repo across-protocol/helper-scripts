@@ -386,13 +386,14 @@ export async function fetchRoutes(
           isSupportedChainId(fromChainId),
           "Missing supported chain id: " + fromChain
         );
-        const { maxRange, earliestBlock } = getChainInfo(fromChainId);
+        const { maxRange } = getChainInfo(fromChainId);
         const spokePoolAddress = fromSpokeAddress;
         const provider = getProvider(fromChainId);
+        const deployedBlock = getDeployedBlockNumber("SpokePool", fromChainId);
         const pool = new SpokePoolUtils(
           fromSpokeAddress,
           provider,
-          earliestBlock,
+          deployedBlock,
           maxRange
         );
         return {

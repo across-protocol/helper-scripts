@@ -61,7 +61,6 @@ export type ChainInfo = {
   explorerUrl: string;
   pollingInterval?: number;
   nativeCurrencySymbol: string;
-  earliestBlock: number;
   maxRange?: number;
 };
 export type ChainInfoList = ChainInfo[];
@@ -73,7 +72,6 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.MAINNET,
     explorerUrl: "https://etherscan.io",
     nativeCurrencySymbol: "ETH",
-    earliestBlock: 14704308,
   },
   [ChainId.OPTIMISM]: {
     name: "Optimism",
@@ -81,7 +79,6 @@ export const CHAINS: ChainInfoTable = {
     rpcUrl: "https://mainnet.optimism.io",
     explorerUrl: "https://optimistic.etherscan.io",
     nativeCurrencySymbol: "OETH",
-    earliestBlock: 6979967,
   },
   [ChainId.ARBITRUM]: {
     name: "Arbitrum",
@@ -90,7 +87,6 @@ export const CHAINS: ChainInfoTable = {
     rpcUrl: "https://arb1.arbitrum.io/rpc",
     explorerUrl: "https://arbiscan.io",
     nativeCurrencySymbol: "AETH",
-    earliestBlock: 6979967,
     maxRange: 99999,
   },
   [ChainId.BOBA]: {
@@ -99,7 +95,6 @@ export const CHAINS: ChainInfoTable = {
     rpcUrl: "https://mainnet.boba.network",
     explorerUrl: "https://blockexplorer.boba.network",
     nativeCurrencySymbol: "ETH",
-    earliestBlock: 551955,
     maxRange: 4999,
   },
   [ChainId.POLYGON]: {
@@ -109,7 +104,6 @@ export const CHAINS: ChainInfoTable = {
     rpcUrl: "https://rpc.ankr.com/polygon",
     explorerUrl: "https://polygonscan.com",
     nativeCurrencySymbol: "MATIC",
-    earliestBlock: 27875891,
     maxRange: 3499,
   },
   [ChainId.RINKEBY]: {
@@ -118,7 +112,6 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.RINKEBY,
     explorerUrl: "https://rinkeby.etherscan.io",
     nativeCurrencySymbol: "ETH",
-    earliestBlock: 10365599,
   },
   [ChainId.KOVAN]: {
     name: "Kovan",
@@ -126,7 +119,6 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.KOVAN,
     explorerUrl: "https://kovan.etherscan.io",
     nativeCurrencySymbol: "KOV",
-    earliestBlock: 31457369,
   },
   [ChainId.KOVAN_OPTIMISM]: {
     name: "Optimism Kovan",
@@ -135,7 +127,6 @@ export const CHAINS: ChainInfoTable = {
     rpcUrl: "https://kovan.optimism.io",
     explorerUrl: "https://kovan-optimistic.etherscan.io",
     nativeCurrencySymbol: "KOR",
-    earliestBlock: 2537971,
   },
   [ChainId.ARBITRUM_RINKEBY]: {
     name: "Arbitrum Rinkeby",
@@ -144,7 +135,6 @@ export const CHAINS: ChainInfoTable = {
     explorerUrl: "https://rinkeby-explorer.arbitrum.io",
     rpcUrl: "https://rinkeby.arbitrum.io/rpc",
     nativeCurrencySymbol: "ARETH",
-    earliestBlock: 10523275,
     maxRange: 99999,
   },
   [ChainId.GOERLI]: {
@@ -153,7 +143,6 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.GOERLI,
     explorerUrl: "https://goerli.etherscan.io/",
     nativeCurrencySymbol: "ETH",
-    earliestBlock: 6860535,
   },
   [ChainId.MUMBAI]: {
     name: "Mumbai",
@@ -161,7 +150,6 @@ export const CHAINS: ChainInfoTable = {
     rpcUrl: "https://matic-mumbai.chainstacklabs.com",
     explorerUrl: "https://mumbai.polygonscan.com",
     nativeCurrencySymbol: "MATIC",
-    earliestBlock: 26276253,
     maxRange: 3499,
   },
 };
