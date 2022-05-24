@@ -52,6 +52,15 @@ export interface Route {
   isNative: boolean;
   l1TokenAddress: string;
 }
+export interface ExtendedChainInfo {
+  maxBlockRange?: number;
+  spokePoolDeployBlock: number;
+  spokePoolAddress: string;
+  chainId: number;
+  nativeCurrencySymbol: string;
+}
+export type ExtendedChainInfoTable = Record<number, ExtendedChainInfo>;
+
 export type Routes = Route[];
 
 // type the hub pool events
@@ -102,11 +111,7 @@ export class SpokePoolUtils {
   }
   async update() {
     await this.fetchEvents();
-    try {
-      this.wrappedNativeToken = await this.contract.wrappedNativeToken();
-    } catch {
-      this.wrappedNativeToken = "0x4200000000000000000000000000000000000006";
-    }
+    this.wrappedNativeToken = await this.contract.wrappedNativeToken();
   }
   async fetchEvents(): Promise<Array<SpokePoolEvent>> {
     const latestBlock = await this.provider.getBlockNumber();
@@ -352,6 +357,8 @@ interface RouteConfig {
   hubPoolAddress: string;
   hubPoolChain: number;
   hubPoolWethAddress: string;
+  hubPoolDeployBlock: number;
+  chainInfo: ExtendedChainInfoTable;
   routes: Routes;
 }
 
@@ -363,12 +370,12 @@ export async function fetchRoutes(
   const { maxRange } = getChainInfo(hubPoolChain);
   const hubPoolAddress =
     hubPoolAddressOverride || getDeployedAddress("HubPool", hubPoolChain);
-  const hubPoolStartBlock = getDeployedBlockNumber("HubPool", hubPoolChain);
+  const hubPoolDeployBlock = getDeployedBlockNumber("HubPool", hubPoolChain);
   const provider = getProvider(hubPoolChain);
   const hubPool = new HubPoolUtils(
     hubPoolAddress,
     provider,
-    Number(hubPoolStartBlock),
+    Number(hubPoolDeployBlock),
     maxRange
   );
   await hubPool.update();
@@ -377,6 +384,7 @@ export async function fetchRoutes(
   const hubPoolWethAddress = hubPool.getWethAddress();
 
   const allRoutes: Routes = [];
+  const chainInfo: ExtendedChainInfoTable = {};
 
   const spokeData = await Promise.all(
     Object.entries(spokePoolAddresses).map(
@@ -386,7 +394,7 @@ export async function fetchRoutes(
           isSupportedChainId(fromChainId),
           "Missing supported chain id: " + fromChain
         );
-        const { maxRange } = getChainInfo(fromChainId);
+        const { maxRange, nativeCurrencySymbol } = getChainInfo(fromChainId);
         const spokePoolAddress = fromSpokeAddress;
         const provider = getProvider(fromChainId);
         const deployedBlock = getDeployedBlockNumber("SpokePool", fromChainId);
@@ -396,9 +404,18 @@ export async function fetchRoutes(
           deployedBlock,
           maxRange
         );
+        chainInfo[fromChainId] = {
+          maxBlockRange: maxRange,
+          spokePoolDeployBlock: deployedBlock,
+          spokePoolAddress,
+          chainId: fromChainId,
+          nativeCurrencySymbol,
+        };
         return {
           fromSpokeAddress,
           fromChain,
+          deployedBlock,
+          maxRange,
           ...(await getSpokePoolState(pool)),
         };
       }
@@ -406,7 +423,14 @@ export async function fetchRoutes(
   );
 
   spokeData.forEach(
-    ({ fromChain, fromSpokeAddress, routes, symbols, wrappedNativeToken }) => {
+    ({
+      fromChain,
+      fromSpokeAddress,
+      routes,
+      symbols,
+      wrappedNativeToken,
+      deployedBlock,
+    }) => {
       const { nativeCurrencySymbol } = getChainInfo(fromChain);
       Object.entries(routes).forEach(([toChain, fromTokenAddresses]) => {
         fromTokenAddresses.forEach((fromTokenAddress) => {
@@ -439,6 +463,8 @@ export async function fetchRoutes(
     hubPoolChain,
     hubPoolAddress,
     hubPoolWethAddress,
+    hubPoolDeployBlock,
+    chainInfo,
     routes: allRoutes,
   };
 }

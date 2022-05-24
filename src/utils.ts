@@ -78,7 +78,7 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.OPTIMISM,
     rpcUrl: "https://mainnet.optimism.io",
     explorerUrl: "https://optimistic.etherscan.io",
-    nativeCurrencySymbol: "OETH",
+    nativeCurrencySymbol: "ETH",
   },
   [ChainId.ARBITRUM]: {
     name: "Arbitrum",
@@ -86,7 +86,7 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.ARBITRUM,
     rpcUrl: "https://arb1.arbitrum.io/rpc",
     explorerUrl: "https://arbiscan.io",
-    nativeCurrencySymbol: "AETH",
+    nativeCurrencySymbol: "ETH",
     maxRange: 99999,
   },
   [ChainId.BOBA]: {
@@ -118,7 +118,7 @@ export const CHAINS: ChainInfoTable = {
     fullName: "Ethereum Testnet Kovan",
     chainId: ChainId.KOVAN,
     explorerUrl: "https://kovan.etherscan.io",
-    nativeCurrencySymbol: "KOV",
+    nativeCurrencySymbol: "ETH",
   },
   [ChainId.KOVAN_OPTIMISM]: {
     name: "Optimism Kovan",
@@ -126,7 +126,7 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.KOVAN_OPTIMISM,
     rpcUrl: "https://kovan.optimism.io",
     explorerUrl: "https://kovan-optimistic.etherscan.io",
-    nativeCurrencySymbol: "KOR",
+    nativeCurrencySymbol: "ETH",
   },
   [ChainId.ARBITRUM_RINKEBY]: {
     name: "Arbitrum Rinkeby",
@@ -134,7 +134,7 @@ export const CHAINS: ChainInfoTable = {
     chainId: ChainId.ARBITRUM_RINKEBY,
     explorerUrl: "https://rinkeby-explorer.arbitrum.io",
     rpcUrl: "https://rinkeby.arbitrum.io/rpc",
-    nativeCurrencySymbol: "ARETH",
+    nativeCurrencySymbol: "ETH",
     maxRange: 99999,
   },
   [ChainId.GOERLI]: {
