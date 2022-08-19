@@ -1,4 +1,5 @@
 import assert from "assert";
+import bluebird from "bluebird";
 import {
   getProvider,
   ChainId,
@@ -127,7 +128,7 @@ export class SpokePoolUtils {
         maxRange
       ),
     ];
-    this.events = (await Promise.all(queries)).flat();
+    this.events = (await bluebird.mapSeries(queries, (x) => x)).flat();
     return this.events;
   }
   routesEnabled(): Record<string, string[]> {
@@ -187,11 +188,11 @@ export class HubPoolUtils {
     return this.wethAddress;
   }
   async fetchEvents(): Promise<HubPoolEvent[]> {
-    const latestBlock = await this.provider.getBlockNumber();
+    const latestBlock = (await this.provider.getBlockNumber()) - 1;
     const startBlock = this.startBlock;
     const maxRange = this.maxRange;
     const queries = [
-      incrementalEvents(
+      incrementalEvents<L1TokenEnabledForLiquidityProvision>(
         (startBlock: number, endBlock: number) => {
           return this.contract.queryFilter(
             this.contract.filters.L1TokenEnabledForLiquidityProvision(),
@@ -203,7 +204,7 @@ export class HubPoolUtils {
         latestBlock,
         maxRange
       ),
-      incrementalEvents(
+      incrementalEvents<L2TokenDisabledForLiquidityProvision>(
         (startBlock: number, endBlock: number) => {
           return this.contract.queryFilter(
             this.contract.filters.L2TokenDisabledForLiquidityProvision(),
@@ -215,7 +216,7 @@ export class HubPoolUtils {
         latestBlock,
         maxRange
       ),
-      incrementalEvents(
+      incrementalEvents<SetEnableDepositRoute>(
         (startBlock: number, endBlock: number) => {
           return this.contract.queryFilter(
             this.contract.filters.SetEnableDepositRoute(),
@@ -227,7 +228,7 @@ export class HubPoolUtils {
         latestBlock,
         maxRange
       ),
-      incrementalEvents(
+      incrementalEvents<CrossChainContractsSet>(
         (startBlock: number, endBlock: number) => {
           return this.contract.queryFilter(
             this.contract.filters.CrossChainContractsSet(),
@@ -252,7 +253,7 @@ export class HubPoolUtils {
         maxRange
       ),
     ];
-    this.events = (await Promise.all(queries))
+    this.events = (await bluebird.mapSeries(queries, (x) => x))
       .flat()
       .sort((a: HubPoolEvent, b: HubPoolEvent) => {
         if (a.blockNumber !== b.blockNumber)

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@across-protocol/contracts-v2@^0.0.55":
-  version "0.0.55"
-  resolved "https://registry.yarnpkg.com/@across-protocol/contracts-v2/-/contracts-v2-0.0.55.tgz#cad1de8e441585afd799376ec63b1c94620bfa4c"
-  integrity sha512-1bVFx7f8o+RBJTvQp+x49IczmYXFxwywWikEFHvBe8Vbw/kkekI5xKG6X/u/Op+on1XpvwVI1Fyk5vFNVbO6pQ==
+"@across-protocol/contracts-v2@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@across-protocol/contracts-v2/-/contracts-v2-1.0.2.tgz#53c1c56f159209d4e5c5c658a959251c6c7a2b5f"
+  integrity sha512-Or7Ccs4Fw8yolUGHn7cay6HTq6cdP6AuZm4/9RdUgNcqiGWTeNw8o7CbJLEjn9+6xrhrHWf/AUtbBXkdVVS+wg==
   dependencies:
     "@defi-wonderland/smock" "^2.0.7"
     "@eth-optimism/contracts" "^0.5.11"
@@ -1934,6 +1934,11 @@
   dependencies:
     bignumber.js "*"
 
+"@types/bluebird@^3.5.36":
+  version "3.5.36"
+  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.36.tgz#00d9301d4dc35c2f6465a8aec634bb533674c652"
+  integrity sha512-HBNx4lhkxN7bx6P0++W8E289foSu8kO8GCk2unhuVggO+cE7rh9DhZUyPhUxNRG9m+5B5BTKxZQ5ZP92x/mx9Q==
+
 "@types/bn.js@5.1.0", "@types/bn.js@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-5.1.0.tgz#32c5d271503a12653c62cf4d2b45e6eab8cebc68"
@@ -2094,20 +2099,20 @@
     web3 "^1.6.0"
     winston "^3.2.1"
 
-"@uma/contracts-frontend@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@uma/contracts-frontend/-/contracts-frontend-0.3.5.tgz#b50c5282cf8fc2a572db3a7d8e8243c9bbb6fca5"
-  integrity sha512-85q56CeC90/jibyx69aqFGJo+AHGdc17iij/RgJNkjNBq6nZVNJsJd3KGRziIeWeonQXj3srwDSPQtcsL5Borg==
+"@uma/contracts-frontend@^0.3.13":
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@uma/contracts-frontend/-/contracts-frontend-0.3.13.tgz#40f2c7c61a66daf1db5080a1dc31473bf3242f64"
+  integrity sha512-eGFjGPUs4Q9D0w9Jaft3mRHp2BnJPsAg42kYRZ+HMpd6/Cn0gfxXpVcwK8a9cpd0Faw4jUwWkyy44+3tXJIQQw==
 
 "@uma/contracts-node@^0.2.0":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@uma/contracts-node/-/contracts-node-0.2.1.tgz#29ebba6b2ecba7f0d2dc9b484bc34f0abbdefdaa"
   integrity sha512-7wPkH/m8tD8UMLYUjSXN5gSp/5NsuPRF1icmwXNTWlhp/Mg4qmJHeANjsWP9JCDxlgdSDixA4hJ5qhVOPXFniA==
 
-"@uma/contracts-node@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@uma/contracts-node/-/contracts-node-0.3.5.tgz#d5eddf736e7af08dff24b0c8b54bd1015f342970"
-  integrity sha512-/j3Yzl52ZQwt+suMNRAGcJf2Kq+unAv6f1DKVZIplfhaJSrHfgwl17YMR3k82knuRSxjJYyTGfYCOWHvsR1/AQ==
+"@uma/contracts-node@^0.3.13":
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@uma/contracts-node/-/contracts-node-0.3.13.tgz#e524b5a3fcc97f3d29bf03aac335dbff9bbcf3ec"
+  integrity sha512-YIZ6l0dzBYF1P1qtHIxCGJiucuqfCxnsAB6FRjF3I39PGMxl6GtTdIz+4NaGzlhF5/5mmWg/ciKil0SleHUDpw==
 
 "@uma/core@^2.18.0", "@uma/core@^2.24.0":
   version "2.28.0"
@@ -2125,15 +2130,15 @@
     "@uniswap/v3-core" "^1.0.0-rc.2"
     "@uniswap/v3-periphery" "^1.0.0-beta.23"
 
-"@uma/sdk@^0.23.2":
-  version "0.23.2"
-  resolved "https://registry.yarnpkg.com/@uma/sdk/-/sdk-0.23.2.tgz#b4fe7cdacd9fd371e3e4473950f23878187aaeb6"
-  integrity sha512-nanWAk3kXvBqtqAA1yEEZFhDAnwia8hun8QLFLYZp73o9ry3v1fJPNtI9lm0wwqUVsXqLipnk2oMj2ui/kh89w==
+"@uma/sdk@^0.28.0":
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/@uma/sdk/-/sdk-0.28.0.tgz#7b776327f2b972ce2ef1a0cf46a6b5587fc34cf1"
+  integrity sha512-c6ai/ETXBu8ba6RI5T6SBCnazt2Jw079Q0Q9GirZZYE/FFmx78sYGIkBEFm6LLwVY6M5PSC/rMhR60jRcjgETQ==
   dependencies:
     "@google-cloud/datastore" "^6.6.0"
     "@types/lodash-es" "^4.17.5"
-    "@uma/contracts-frontend" "^0.3.5"
-    "@uma/contracts-node" "^0.3.5"
+    "@uma/contracts-frontend" "^0.3.13"
+    "@uma/contracts-node" "^0.3.13"
     axios "^0.24.0"
     bn.js "^4.11.9"
     decimal.js "^10.3.1"
@@ -3304,7 +3309,7 @@ blakejs@^1.1.0:
   resolved "https://registry.yarnpkg.com/blakejs/-/blakejs-1.2.1.tgz#5057e4206eadb4a97f7c0b6e197a505042fc3814"
   integrity sha512-QXUSXI3QVc/gJME0dBpXrag1kbzOqCjCX8/b54ntNyW6sjtoqxqRk3LTmXzaJoh71zMsDCjM+47jS7XiwN/+fQ==
 
-bluebird@^3.5.0, bluebird@^3.5.2:
+bluebird@^3.5.0, bluebird@^3.5.2, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
